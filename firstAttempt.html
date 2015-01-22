@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Brooke's Tic Tac Toe</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<!-- <script type="text/javascript" src="test.js"></script> -->
+</head>
+<body>
+	<h1>Tic Tac Toe</h1>
+	<div id="fullBoard">
+		<div id="board">
+			<div class="box" id="box0" data-number=0></div>
+			<div class="box" id="box1" data-number=1></div>
+			<div class="box" id="box2" data-number=2></div>
+			<div class="box" id="box3" data-number=3></div>
+			<div class="box" id="box4" data-number=4></div>
+			<div class="box" id="box5" data-number=5></div>
+			<div class="box" id="box6" data-number=6></div>
+			<div class="box" id="box7" data-number=7></div>
+			<div class="box" id="box8" data-number=8></div>
+		</div>
+	</div>
+
+	<script>
+		var player = 1;
+		var winner = "";
+		// var boxNumber;
+		//define all the column, row, and diagonal counts
+		var countFirstCol1 = 0;
+		var countSecondCol1 = 0;
+		var countThirdCol1 = 0;
+		var countNWDiagonal1 = 0;
+		var countNEDiagonal1 = 0;
+		var countFirstRow1 = 0;
+		var countSecondRow1 = 0;
+		var countThirdRow1 = 0;
+
+		var countFirstCol2 = 0;
+		var countSecondCol2 = 0;
+		var countThirdCol2 = 0;
+		var countNWDiagonal2 = 0;
+		var countNEDiagonal2 = 0;
+		var countFirstRow2 = 0;
+		var countSecondRow2 = 0;
+		var countThirdRow2 = 0;
+
+		//declare the boxes to be variables
+		// var box0 = document.getElementById("box0");
+		// document.getElementById("box0").addEventListener('click', function() {alert("clicked")});
+		// var box1 = document.getElementById("box1");
+		// var box2 = document.getElementById("box2");
+		// var box3 = document.getElementById("box3");
+		// var box4 = document.getElementById("box4");
+		// var box5 = document.getElementById("box5");
+		// var box6 = document.getElementById("box6");
+		// var box7 = document.getElementById("box7");
+		// var box8 = document.getElementById("box8");
+
+
+
+		// while (countFirstCol1 < 3 && countSecondCol1 < 3 && countThirdCol1 < 3 && countNWDiagonal1 < 3 && countNEDiagonal1 < 3 && countFirstRow1 < 3 && countSecondRow1 < 3 && countThirdRow1 < 3 && countFirstCol2 < 3 && countSecondCol2 < 3 && countThirdCol2 < 3 && countNWDiagonal2 < 3 && countNEDiagonal2 < 3 && countFirstRow2 < 3 && countSecondRow2 < 3 && countThirdRow2 < 3) {
+		// 	while (player === 1) {
+
+
+				var boxNumber = 0;
+				var clickedBox;
+				while (boxNumber < 9) {
+				// for (var boxNumber = 0; boxNumber < 9; boxNumber++) {
+					var box = document.getElementById("box" + boxNumber);
+					box.addEventListener('click', function(){
+						// alert("clicked box " + boxNumber);
+						clickedBox = box.getAttribute("data-number");
+						addToCount();
+										// if (boxNumber < 3 && ) {
+											// countFirstRow1++;
+										// } else if (boxNumber > 2 && boxNumber < 6) {
+											// 	countSecondRow1++;
+										// } else if (boxNumber > 5 && boxNumber < 9) {
+											// 	countThirdRow1++;
+										// } else if (boxNumber%3 === 0) {
+											// 	countFirstCol1++;
+										// } else if (boxNumber%3 === 1) {
+											// 	countSecondCol1++;
+										// } else if (boxNumber%3 === 2) {
+											// 	countThirdCol1++;
+										// } else if (boxNumber%4 === 0) {
+											// 	countNWDiagonal1++;
+										// } else if (boxNumber%2 === 0) {
+											// 	countNEDiagonal1++;
+										// }
+						// player = 0;
+					});
+					boxNumber++;
+				}
+			// }
+
+			// while (player === 0) {
+			// 	for (var i = 0; i < 9; i++) {
+			// 		// var boxId = "box" + i;
+			// 		document.getElementById("box" + i).addEventListener('click', function(){
+			// 			boxNumber = box.getAttribute("data-number");
+			// 			if (boxNumber%3 === 0) {
+			// 				countFirstCol2++;
+			// 			} else if (boxNumber%3 === 1) {
+			// 				countSecondCol2++;
+			// 			} else if (boxNumber%3 === 2) {
+			// 				countThirdCol2++;
+			// 			} else if (boxNumber%4 === 0) {
+			// 				countNWDiagonal2++;
+			// 			} else if (boxNumber%2 === 0) {
+			// 				countNEDiagonal2++;
+			// 			} else if (boxNumber < 3) {
+			// 				countFirstRow2++;
+			// 			} else if (boxNumber > 2 && boxNumber < 6) {
+			// 				countSecondRow2++;
+			// 			} else if (boxNumber > 5 && boxNumber < 9) {
+			// 				countThirdRow2++;
+			// 			}
+			// 			player = 1;
+			// 		});
+			// 	}
+			// }
+		// }
+
+		// function determineWinner() {
+		// 	if (countFirstCol1 === 3 || countSecondCol1 === 3 || countThirdCol1 === 3 || countNWDiagonal1 === 3 || countNEDiagonal1 === 3 || countFirstRow1 === 3 || countSecondRow1 === 3 || countThirdRow1 === 3) {
+		// 		alert("Player 1 is the winner!");
+		// 		winner = "1";
+		// 	} else {
+		// 		alert("Player 2 is the winner!");
+		// 		winner = "2";
+		// 	}
+		// }
+
+		// determineWinner();
+		function addToCount() {
+			if (clickedBox < 3) {
+				countFirstRow1++;
+			} else if (clickedBox > 2 && clickedBox < 6) {
+				countSecondRow1++;clickedBox
+			} else if (clickedBox > 5 && clickedBox < 9) {
+				countThirdRow1++;
+			} else if (clickedBox%3 === 0) {
+				countFirstCol1++;
+			} else if (clickedBox%3 === 1) {
+				countSecondCol1++;
+			} else if (clickedBox%3 === 2) {
+				countThirdCol1++;
+			} else if (clickedBox%4 === 0) {
+				countNWDiagonal1++;
+			} else if (clickedBox%2 === 0) {
+				countNEDiagonal1++;
+			}
+		}
+	</script>
+</body>
+</html>
