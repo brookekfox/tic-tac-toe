@@ -8,11 +8,8 @@
 <body>
 	<h1>Tic Tac Toe</h1>
 	<div>
-		<input type="submit" value="PLAY" id="playButton">
-	</div>
-	<div class="centered">
-		<h2 id="player1Score"></h2>
-		<h2 id="player2Score"></h2>
+		<h2 id="player1Score">Player 1: 0</h2>
+		<h2 id="player2Score">Player 2: 0</h2>
 	</div>
 	<div id="fullBoard">
 		<div id="board">
@@ -29,6 +26,276 @@
 	</div>
 
 	<script>
+		var countFirstCol1 = 0;
+		var countSecondCol1 = 0;
+		var countThirdCol1 = 0;
+		var countNWDiagonal1 = 0;
+		var countNEDiagonal1 = 0;
+		var countFirstRow1 = 0;
+		var countSecondRow1 = 0;
+		var countThirdRow1 = 0;
+
+		var countFirstCol2 = 0;
+		var countSecondCol2 = 0;
+		var countThirdCol2 = 0;
+		var countNWDiagonal2 = 0;
+		var countNEDiagonal2 = 0;
+		var countFirstRow2 = 0;
+		var countSecondRow2 = 0;
+		var countThirdRow2 = 0;
+
+		var turn = 0;
+		var player = 1;
+		var player1 = 0;
+		var player2 = 0;
+
+			var box0 = document.getElementById("box0");
+			var box0Clicked = false;
+			box0.addEventListener('click',function(){
+				if (player === 1 && box0Clicked === false) {
+					box0.innerHTML = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+					box0Clicked = true;
+					countFirstCol1++;
+					countFirstRow1++;
+					countNWDiagonal1++;
+					player = 0;
+					turn++;
+					winner();
+				} else if (player === 0 && box0Clicked === false) {
+					box0.innerHTML = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+					box0Clicked = true;
+					countFirstCol2++;
+					countFirstRow2++;
+					countNWDiagonal2++;
+					player = 1;
+					turn++;
+					winner();
+				} else {
+					alert("That space is taken already!");
+				}
+			});
+
+			var box1 = document.getElementById("box1");
+			var box1Clicked = false;
+			box1.addEventListener('click',function(){
+				if (player === 1 && box1Clicked === false) {
+					box1.innerHTML = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+					box1Clicked = true;
+					countSecondCol1++;
+					countFirstRow1++;
+					player = 0;
+					turn++;
+					winner();
+				} else if (player === 0 && box1Clicked === false) {
+					box1.innerHTML = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+					box1Clicked = true;
+					countSecondCol2++;
+					countFirstRow2++;
+					player = 1;
+					turn++;
+					winner();
+				} else {
+					alert("That space is taken already!");
+				}
+			});
+
+			var box2 = document.getElementById("box2");
+			var box2Clicked = false;
+			box2.addEventListener('click',function(){
+				if (player === 1 && box2Clicked === false) {
+					box2.innerHTML = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+					box2Clicked = true;
+					countThirdCol1++;
+					countFirstRow1++;
+					countNEDiagonal1++;
+					player = 0;
+					turn++;
+					winner();
+				} else if (player === 0 && box2Clicked === false) {
+					box2.innerHTML = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+					box2Clicked = true;
+					countThirdCol2++;
+					countFirstRow2++;
+					countNEDiagonal2++;
+					player = 1;
+					turn++;
+					winner();
+				} else {
+					alert("That space is taken already!");
+				}
+			});
+
+			var box3 = document.getElementById("box3");
+			var box3Clicked = false;
+			box3.addEventListener('click',function(){
+				if (player === 1 && box3Clicked === false) {
+					box3.innerHTML = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+					box3Clicked = true;
+					countFirstCol1++;
+					countSecondRow1++;
+					player = 0;
+					turn++;
+					winner();
+				} else if (player === 0 && box3Clicked === false) {
+					box3.innerHTML = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+					box3Clicked = true;
+					countFirstCol2++;
+					countSecondRow2++;
+					player = 1;
+					turn++;
+					winner();
+				} else {
+					alert("That space is taken already!");
+				}
+			});
+
+			var box4 = document.getElementById("box4");
+			var box4Clicked = false;
+			box4.addEventListener('click',function(){
+				if (player === 1 && box4Clicked === false) {
+					box4.innerHTML = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+					box4Clicked = true;
+					countSecondCol1++;
+					countSecondRow1++;
+					countNWDiagonal1++;
+					countNEDiagonal1++;
+					player = 0;
+					turn++;
+					winner();
+				} else if (player === 0 && box4Clicked === false) {
+					box4.innerHTML = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+					box4Clicked = true;
+					countSecondCol2++;
+					countSecondRow2++;
+					countNWDiagonal2++;
+					countNEDiagonal2++;
+					player = 1;
+					turn++;
+					winner();
+				} else {
+					alert("That space is taken already!");
+				}
+			});
+
+			var box5 = document.getElementById("box5");
+			var box5Clicked = false;
+			box5.addEventListener('click',function(){
+				if (player === 1 && box5Clicked === false) {
+					box5.innerHTML = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+					box5Clicked = true;
+					countThirdCol1++;
+					countSecondRow1++;
+					player = 0;
+					turn++;
+					winner();
+				} else if (player === 0 && box5Clicked === false) {
+					box5.innerHTML = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+					box5Clicked = true;
+					countThirdCol2++;
+					countSecondRow2++;
+					player = 1;
+					turn++;
+					winner();
+				} else {
+					alert("That space is taken already!");
+				}
+			});
+
+			var box6 = document.getElementById("box6");
+			var box6Clicked = false;
+			box6.addEventListener('click',function(){
+				if (player === 1 && box6Clicked === false) {
+					box6.innerHTML = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+					box6Clicked = true;
+					countFirstCol1++;
+					countThirdRow1++;
+					countNEDiagonal1++;
+					player = 0;
+					turn++;
+					winner();
+				} else if (player === 0 && box6Clicked === false) {
+					box6.innerHTML = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+					box6Clicked = true;
+					countFirstCol2++;
+					countThirdRow2++;
+					countNEDiagonal2++;
+					player = 1;
+					turn++;
+					winner();
+				} else {
+					alert("That space is taken already!");
+				}
+			});
+
+			var box7 = document.getElementById("box7");
+			var box7Clicked = false;
+			box7.addEventListener('click',function(){
+				if (player === 1 && box7Clicked === false) {
+					box7.innerHTML = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+					box7Clicked = true;
+					countSecondCol1++;
+					countThirdRow1++;
+					player = 0;
+					turn++;
+					winner();
+				} else if (player === 0 && box7Clicked === false) {
+					box7.innerHTML = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+					box7Clicked = true;
+					countSecondCol2++;
+					countThirdRow2++;
+					player = 1;
+					turn++;
+					winner();
+				} else {
+					alert("That space is taken already!");
+				}
+			});
+
+			var box8 = document.getElementById("box8");
+			var box8Clicked = false;
+			box8.addEventListener('click',function(){
+				if (player === 1 && box8Clicked === false) {
+					box8.innerHTML = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+					box8Clicked = true;
+					countThirdCol1++;
+					countThirdRow1++;
+					countNWDiagonal1++;
+					player = 0;
+					turn++;
+					winner();
+				} else if (player === 0 && box8Clicked === false) {
+					box8.innerHTML = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+					box8Clicked = true;
+					countThirdCol2++;
+					countThirdRow2++;
+					countNWDiagonal2++;
+					player = 1;
+					turn++;
+					winner();
+				} else {
+					alert("That space is taken already!");
+				}
+			});
+
+
+		function winner() {
+			if (countFirstCol1 === 3 || countSecondCol1 === 3 || countThirdCol1 === 3 || countFirstRow1 === 3 || countSecondRow1 === 3 || countThirdRow1 === 3 || countNWDiagonal1 === 3 || countNEDiagonal1 === 3) {
+				alert("Player 1 won!");
+				reset();
+				player1++;
+				document.getElementById("player1Score").innerHTML = "Player 1: " + player1;
+			} else if (countFirstCol2 === 3 || countSecondCol2 === 3 || countThirdCol2 === 3 || countFirstRow2 === 3 || countSecondRow2 === 3 || countThirdRow2 === 3 || countNWDiagonal2 === 3 || countNEDiagonal2 === 3) {
+				alert("Player 2 won!");
+				reset();
+				player2++;
+				document.getElementById("player2Score").innerHTML = "Player 2: " + player2;
+			} else if (turn === 9) {
+				alert("It's a draw");
+				reset();
+			} else {
+				console.log("It's been " + turn + " turns.");
+			}
+		}
 		function reset() {
 			countFirstCol1 = 0;
 			countSecondCol1 = 0;
@@ -66,319 +333,6 @@
 			box6Clicked = false;
 			box7Clicked = false;
 			box8Clicked = false;
-		}
-
-		var player1Image = "";
-		var player2Image = "";
-		var choice = 0;
-		document.getElementById("playButton").addEventListener('click', function () {
-			choice = prompt("Choose: [1] Tina Belcher vs. Louise Belcher, [2] Mr. Darcy vs. Elizabeth Bennet, [3] Dillon Panthers vs. East Dillon Lions, [4] Ron Swanson vs. Leslie Knope, [5] Pizza vs. Mac & Cheese, [6] Abbi vs. Ilana");
-			if(choice == 1) {
-				player1Name = "Tina Belcher";
-				player1Image = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
-				player2Name = "Louise Belcher";
-				player2Image = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
-			} else if (choice == 2) {
-				player1Name = "Mr. Darcy";
-				player1Image = "<img src='http://vignette3.wikia.nocookie.net/janeausten/images/2/2d/Mrdarcy.jpg/revision/latest?cb=20111116035357'>";
-				player2Name = "Elizabeth Bennet";
-				player2Image = "<img src='http://images2.fanpop.com/image/photos/10400000/Elizabeth-keira-knightley-as-elizabeth-bennet-10470495-1250-820.jpg'>";
-			} else if (choice == 3) {
-				player1Name = "Dillon Panthers";
-				player1Image = "<img src='http://ih3.redbubble.net/image.10753990.0624/sticker,375x360.u1.png'>";
-				player2Name = "East Dillon Lions";
-				player2Image = "<img src='http://ih3.redbubble.net/image.10754016.0657/sticker,375x360.u1.png'>";
-			} else if (choice == 4) {
-				player1Name = "Ron Swanson";
-				player1Image = "<img src='http://whatwouldronsay.com/img/ron-2.png'>";
-				player2Name = "Leslie Knope";
-				player2Image = "<img src='http://assets.goodstatic.com/s3/magazine/assets/538060/original/tumblr_n1kig7ck7D1qayeymo5_500.gif'>";
-			} else if (choice == 5) {
-				player1Name = "Pizza";
-				player1Image = "<img src='http://img4.wikia.nocookie.net/__cb20121123053932/bravestwarriors/images/f/f4/PIzza.png'>";
-				player2Name = "Mac & Cheese";
-				player2Image = "<img src='http://s3.amazonaws.com/bojangles.com/content/menu/items/sizes/photos/large/29.png'>";
-			} else if (choice == 6) {
-				player1Name = "Abbi";
-				player1Image = "<img src='http://cdn2.thegloss.com/wp-content/uploads/2015/01/Abbi-Jacobson-gif.gif'>";
-				player2Name = "Ilana";
-				player2Image = "<img src='http://thetuskdotcom.files.wordpress.com/2014/03/tumblr_n0rcgxhsdj1r3vav0o1_1280.png'>";
-			}
-			document.getElementById("player1Score").innerHTML = player1Name + ": " + player1;
-			document.getElementById("player2Score").innerHTML = player2Name + ": " + player2;
-			reset();
-		});
-
-		var countFirstCol1 = 0;
-		var countSecondCol1 = 0;
-		var countThirdCol1 = 0;
-		var countNWDiagonal1 = 0;
-		var countNEDiagonal1 = 0;
-		var countFirstRow1 = 0;
-		var countSecondRow1 = 0;
-		var countThirdRow1 = 0;
-
-		var countFirstCol2 = 0;
-		var countSecondCol2 = 0;
-		var countThirdCol2 = 0;
-		var countNWDiagonal2 = 0;
-		var countNEDiagonal2 = 0;
-		var countFirstRow2 = 0;
-		var countSecondRow2 = 0;
-		var countThirdRow2 = 0;
-
-		var turn = 0;
-		var player = 1;
-		var player1 = 0;
-		var player2 = 0;
-
-			var box0 = document.getElementById("box0");
-			var box0Clicked = false;
-			box0.addEventListener('click',function(){
-				if (player === 1 && box0Clicked === false) {
-					box0.innerHTML = player1Image;
-					box0Clicked = true;
-					countFirstCol1++;
-					countFirstRow1++;
-					countNWDiagonal1++;
-					player = 0;
-					turn++;
-					winner();
-				} else if (player === 0 && box0Clicked === false) {
-					box0.innerHTML = player2Image;
-					box0Clicked = true;
-					countFirstCol2++;
-					countFirstRow2++;
-					countNWDiagonal2++;
-					player = 1;
-					turn++;
-					winner();
-				} else {
-					alert("That space is taken already!");
-				}
-			});
-
-			var box1 = document.getElementById("box1");
-			var box1Clicked = false;
-			box1.addEventListener('click',function(){
-				if (player === 1 && box1Clicked === false) {
-					box1.innerHTML = player1Image;
-					box1Clicked = true;
-					countSecondCol1++;
-					countFirstRow1++;
-					player = 0;
-					turn++;
-					winner();
-				} else if (player === 0 && box1Clicked === false) {
-					box1.innerHTML = player2Image;
-					box1Clicked = true;
-					countSecondCol2++;
-					countFirstRow2++;
-					player = 1;
-					turn++;
-					winner();
-				} else {
-					alert("That space is taken already!");
-				}
-			});
-
-			var box2 = document.getElementById("box2");
-			var box2Clicked = false;
-			box2.addEventListener('click',function(){
-				if (player === 1 && box2Clicked === false) {
-					box2.innerHTML = player1Image;
-					box2Clicked = true;
-					countThirdCol1++;
-					countFirstRow1++;
-					countNEDiagonal1++;
-					player = 0;
-					turn++;
-					winner();
-				} else if (player === 0 && box2Clicked === false) {
-					box2.innerHTML = player2Image;
-					box2Clicked = true;
-					countThirdCol2++;
-					countFirstRow2++;
-					countNEDiagonal2++;
-					player = 1;
-					turn++;
-					winner();
-				} else {
-					alert("That space is taken already!");
-				}
-			});
-
-			var box3 = document.getElementById("box3");
-			var box3Clicked = false;
-			box3.addEventListener('click',function(){
-				if (player === 1 && box3Clicked === false) {
-					box3.innerHTML = player1Image;
-					box3Clicked = true;
-					countFirstCol1++;
-					countSecondRow1++;
-					player = 0;
-					turn++;
-					winner();
-				} else if (player === 0 && box3Clicked === false) {
-					box3.innerHTML = player2Image;
-					box3Clicked = true;
-					countFirstCol2++;
-					countSecondRow2++;
-					player = 1;
-					turn++;
-					winner();
-				} else {
-					alert("That space is taken already!");
-				}
-			});
-
-			var box4 = document.getElementById("box4");
-			var box4Clicked = false;
-			box4.addEventListener('click',function(){
-				if (player === 1 && box4Clicked === false) {
-					box4.innerHTML = player1Image;
-					box4Clicked = true;
-					countSecondCol1++;
-					countSecondRow1++;
-					countNWDiagonal1++;
-					countNEDiagonal1++;
-					player = 0;
-					turn++;
-					winner();
-				} else if (player === 0 && box4Clicked === false) {
-					box4.innerHTML = player2Image;
-					box4Clicked = true;
-					countSecondCol2++;
-					countSecondRow2++;
-					countNWDiagonal2++;
-					countNEDiagonal2++;
-					player = 1;
-					turn++;
-					winner();
-				} else {
-					alert("That space is taken already!");
-				}
-			});
-
-			var box5 = document.getElementById("box5");
-			var box5Clicked = false;
-			box5.addEventListener('click',function(){
-				if (player === 1 && box5Clicked === false) {
-					box5.innerHTML = player1Image;
-					box5Clicked = true;
-					countThirdCol1++;
-					countSecondRow1++;
-					player = 0;
-					turn++;
-					winner();
-				} else if (player === 0 && box5Clicked === false) {
-					box5.innerHTML = player2Image;
-					box5Clicked = true;
-					countThirdCol2++;
-					countSecondRow2++;
-					player = 1;
-					turn++;
-					winner();
-				} else {
-					alert("That space is taken already!");
-				}
-			});
-
-			var box6 = document.getElementById("box6");
-			var box6Clicked = false;
-			box6.addEventListener('click',function(){
-				if (player === 1 && box6Clicked === false) {
-					box6.innerHTML = player1Image;
-					box6Clicked = true;
-					countFirstCol1++;
-					countThirdRow1++;
-					countNEDiagonal1++;
-					player = 0;
-					turn++;
-					winner();
-				} else if (player === 0 && box6Clicked === false) {
-					box6.innerHTML = player2Image;
-					box6Clicked = true;
-					countFirstCol2++;
-					countThirdRow2++;
-					countNEDiagonal2++;
-					player = 1;
-					turn++;
-					winner();
-				} else {
-					alert("That space is taken already!");
-				}
-			});
-
-			var box7 = document.getElementById("box7");
-			var box7Clicked = false;
-			box7.addEventListener('click',function(){
-				if (player === 1 && box7Clicked === false) {
-					box7.innerHTML = player1Image;
-					box7Clicked = true;
-					countSecondCol1++;
-					countThirdRow1++;
-					player = 0;
-					turn++;
-					winner();
-				} else if (player === 0 && box7Clicked === false) {
-					box7.innerHTML = player2Image;
-					box7Clicked = true;
-					countSecondCol2++;
-					countThirdRow2++;
-					player = 1;
-					turn++;
-					winner();
-				} else {
-					alert("That space is taken already!");
-				}
-			});
-
-			var box8 = document.getElementById("box8");
-			var box8Clicked = false;
-			box8.addEventListener('click',function(){
-				if (player === 1 && box8Clicked === false) {
-					box8.innerHTML = player1Image;
-					box8Clicked = true;
-					countThirdCol1++;
-					countThirdRow1++;
-					countNWDiagonal1++;
-					player = 0;
-					turn++;
-					winner();
-				} else if (player === 0 && box8Clicked === false) {
-					box8.innerHTML = player2Image;
-					box8Clicked = true;
-					countThirdCol2++;
-					countThirdRow2++;
-					countNWDiagonal2++;
-					player = 1;
-					turn++;
-					winner();
-				} else {
-					alert("That space is taken already!");
-				}
-			});
-
-
-		function winner() {
-			if (choice != 0 && (countFirstCol1 === 3 || countSecondCol1 === 3 || countThirdCol1 === 3 || countFirstRow1 === 3 || countSecondRow1 === 3 || countThirdRow1 === 3 || countNWDiagonal1 === 3 || countNEDiagonal1 === 3)) {
-				alert(player1Name + " won!");
-				reset();
-				player1++;
-				document.getElementById("player1Score").innerHTML = player1Name + ": " + player1;
-			} else if (choice != 0 && (countFirstCol2 === 3 || countSecondCol2 === 3 || countThirdCol2 === 3 || countFirstRow2 === 3 || countSecondRow2 === 3 || countThirdRow2 === 3 || countNWDiagonal2 === 3 || countNEDiagonal2 === 3)) {
-				alert(player2Name + " won!");
-				reset();
-				player2++;
-				document.getElementById("player2Score").innerHTML = player2Name + ": " + player2;
-			} else if (choice !=0 && turn === 9) {
-				alert("It's a draw");
-				reset();
-			} else if (choice == 0 && turn === 9) {
-				alert("Click the play button!");
-				reset();
-			} else {}
 		}
 	</script>
 </body>
