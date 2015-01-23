@@ -35,22 +35,7 @@
 	<script>
 		// this function resets the game board to empty; it does not reset the player win count
 		function reset() {
-			countFirstCol1 = 0;
-			countSecondCol1 = 0;
-			countThirdCol1 = 0;
-			countNWDiagonal1 = 0;
-			countNEDiagonal1 = 0;
-			countFirstRow1 = 0;
-			countSecondRow1 = 0;
-			countThirdRow1 = 0;
-			countFirstCol2 = 0;
-			countSecondCol2 = 0;
-			countThirdCol2 = 0;
-			countNWDiagonal2 = 0;
-			countNEDiagonal2 = 0;
-			countFirstRow2 = 0;
-			countSecondRow2 = 0;
-			countThirdRow2 = 0;
+			countWins = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
 			box0.innerHTML = "";
 			box1.innerHTML = "";
 			box2.innerHTML = "";
@@ -135,24 +120,9 @@
 			document.getElementById("player2Score").innerHTML = player2Name + ": " + player2;
 		});
 
-		//these variables set the total number of boxes in each column, row, and diagonal each player occupies; in order to start the game, these should be 0 (the players do not occupy any boxes)
-		var countFirstCol1 = 0;
-		var countSecondCol1 = 0;
-		var countThirdCol1 = 0;
-		var countNWDiagonal1 = 0;
-		var countNEDiagonal1 = 0;
-		var countFirstRow1 = 0;
-		var countSecondRow1 = 0;
-		var countThirdRow1 = 0;
-
-		var countFirstCol2 = 0;
-		var countSecondCol2 = 0;
-		var countThirdCol2 = 0;
-		var countNWDiagonal2 = 0;
-		var countNEDiagonal2 = 0;
-		var countFirstRow2 = 0;
-		var countSecondRow2 = 0;
-		var countThirdRow2 = 0;
+		//this array sets the total number of boxes in each column, row, and diagonal each player occupies; in order to start the game, these should be 0 (ie the players do not occupy any boxes)
+		var countWins = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+		//[[col1] = 0,[col2] = 1,[col3] = 2,[row1] = 3,[row2] = 4,[row3] = 5,[nwDiag] = 6,[neDiag] = 7];
 
 		//turn is required to determine a "cat's game" or a draw
 		var turn = 0;
@@ -172,21 +142,21 @@
 				//when the box is cicked we change its cicked value to true so another piece cannot try to take its place
 				box0Clicked = true;
 				//box0 specifically occupies space in column 1, row 1, and the NW diagonal so we must increment those values (for the win logic)
-				countFirstCol1++;
-				countFirstRow1++;
-				countNWDiagonal1++;
+				countWins[0][0]++;
+				countWins[3][0]++;
+				countWins[6][0]++;
+				//check for a winner
+				winner();
 				//switch players
 				player = 0;
 				//add one to the turn count (so we don't exceed 9 turns on one game)
 				turn++;
-				//check for a winner
-				winner();
 			} else if (player === 0 && box0Clicked === false) {
 				box0.innerHTML = player2Image;
 				box0Clicked = true;
-				countFirstCol2++;
-				countFirstRow2++;
-				countNWDiagonal2++;
+				countWins[0][1]++;
+				countWins[3][1]++;
+				countWins[6][1]++;
 				player = 1;
 				turn++;
 				winner();
@@ -201,16 +171,16 @@
 			if (player === 1 && box1Clicked === false) {
 				box1.innerHTML = player1Image;
 				box1Clicked = true;
-				countSecondCol1++;
-				countFirstRow1++;
+				countWins[1][0]++;
+				countWins[3][0]++;
 				player = 0;
 				turn++;
 				winner();
 			} else if (player === 0 && box1Clicked === false) {
 				box1.innerHTML = player2Image;
 				box1Clicked = true;
-				countSecondCol2++;
-				countFirstRow2++;
+				countWins[1][1]++;
+				countWins[3][1]++;
 				player = 1;
 				turn++;
 				winner();
@@ -225,18 +195,18 @@
 			if (player === 1 && box2Clicked === false) {
 				box2.innerHTML = player1Image;
 				box2Clicked = true;
-				countThirdCol1++;
-				countFirstRow1++;
-				countNEDiagonal1++;
+				countWins[2][0]++;
+				countWins[3][0]++;
+				countWins[7][0]++;
 				player = 0;
 				turn++;
 				winner();
 			} else if (player === 0 && box2Clicked === false) {
 				box2.innerHTML = player2Image;
 				box2Clicked = true;
-				countThirdCol2++;
-				countFirstRow2++;
-				countNEDiagonal2++;
+				countWins[2][1]++;
+				countWins[3][1]++;
+				countWins[7][1]++;
 				player = 1;
 				turn++;
 				winner();
@@ -251,16 +221,16 @@
 			if (player === 1 && box3Clicked === false) {
 				box3.innerHTML = player1Image;
 				box3Clicked = true;
-				countFirstCol1++;
-				countSecondRow1++;
+				countWins[0][0]++;
+				countWins[4][0]++;
 				player = 0;
 				turn++;
 				winner();
 			} else if (player === 0 && box3Clicked === false) {
 				box3.innerHTML = player2Image;
 				box3Clicked = true;
-				countFirstCol2++;
-				countSecondRow2++;
+				countWins[0][0]++;
+				countWins[4][0]++;
 				player = 1;
 				turn++;
 				winner();
@@ -275,20 +245,20 @@
 			if (player === 1 && box4Clicked === false) {
 				box4.innerHTML = player1Image;
 				box4Clicked = true;
-				countSecondCol1++;
-				countSecondRow1++;
-				countNWDiagonal1++;
-				countNEDiagonal1++;
+				countWins[1][0]++;
+				countWins[4][0]++;
+				countWins[6][0]++;
+				countWins[7][0]++;
 				player = 0;
 				turn++;
 				winner();
 			} else if (player === 0 && box4Clicked === false) {
 				box4.innerHTML = player2Image;
 				box4Clicked = true;
-				countSecondCol2++;
-				countSecondRow2++;
-				countNWDiagonal2++;
-				countNEDiagonal2++;
+				countWins[1][1]++;
+				countWins[4][1]++;
+				countWins[6][1]++;
+				countWins[7][1]++;
 				player = 1;
 				turn++;
 				winner();
@@ -303,16 +273,16 @@
 			if (player === 1 && box5Clicked === false) {
 				box5.innerHTML = player1Image;
 				box5Clicked = true;
-				countThirdCol1++;
-				countSecondRow1++;
+				countWins[2][0]++;
+				countWins[4][0]++;
 				player = 0;
 				turn++;
 				winner();
 			} else if (player === 0 && box5Clicked === false) {
 				box5.innerHTML = player2Image;
 				box5Clicked = true;
-				countThirdCol2++;
-				countSecondRow2++;
+				countWins[2][1]++;
+				countWins[4][1]++;
 				player = 1;
 				turn++;
 				winner();
@@ -327,18 +297,18 @@
 			if (player === 1 && box6Clicked === false) {
 				box6.innerHTML = player1Image;
 				box6Clicked = true;
-				countFirstCol1++;
-				countThirdRow1++;
-				countNEDiagonal1++;
+				countWins[0][0]++;
+				countWins[5][0]++;
+				countWins[7][0]++;
 				player = 0;
 				turn++;
 				winner();
 			} else if (player === 0 && box6Clicked === false) {
 				box6.innerHTML = player2Image;
 				box6Clicked = true;
-				countFirstCol2++;
-				countThirdRow2++;
-				countNEDiagonal2++;
+				countWins[0][1]++;
+				countWins[5][1]++;
+				countWins[7][1]++;
 				player = 1;
 				turn++;
 				winner();
@@ -353,16 +323,16 @@
 			if (player === 1 && box7Clicked === false) {
 				box7.innerHTML = player1Image;
 				box7Clicked = true;
-				countSecondCol1++;
-				countThirdRow1++;
+				countWins[1][0]++;
+				countWins[5][0]++;
 				player = 0;
 				turn++;
 				winner();
 			} else if (player === 0 && box7Clicked === false) {
 				box7.innerHTML = player2Image;
 				box7Clicked = true;
-				countSecondCol2++;
-				countThirdRow2++;
+				countWins[1][1]++;
+				countWins[5][1]++;
 				player = 1;
 				turn++;
 				winner();
@@ -377,18 +347,18 @@
 			if (player === 1 && box8Clicked === false) {
 				box8.innerHTML = player1Image;
 				box8Clicked = true;
-				countThirdCol1++;
-				countThirdRow1++;
-				countNWDiagonal1++;
+				countWins[2][0]++;
+				countWins[5][0]++;
+				countWins[6][0]++;
 				player = 0;
 				turn++;
 				winner();
 			} else if (player === 0 && box8Clicked === false) {
 				box8.innerHTML = player2Image;
 				box8Clicked = true;
-				countThirdCol2++;
-				countThirdRow2++;
-				countNWDiagonal2++;
+				countWins[2][1]++;
+				countWins[5][1]++;
+				countWins[6][1]++;
 				player = 1;
 				turn++;
 				winner();
@@ -399,15 +369,19 @@
 
 		//this function checks for a winner after every turn
 		function winner() {
+		//if player 1 has 3 in ANY of the columns, rows, or diagonals, they win (alert) and we reset the board
+		//to check for a winner, we loop through the countWins array
+		for (var i = 0; i < countWins.length; i++) {
 			//if player 1 has 3 in ANY of the columns, rows, or diagonals, they win (alert) and we reset the board
-			if (choice != 0 && (countFirstCol1 === 3 || countSecondCol1 === 3 || countThirdCol1 === 3 || countFirstRow1 === 3 || countSecondRow1 === 3 || countThirdRow1 === 3 || countNWDiagonal1 === 3 || countNEDiagonal1 === 3)) {
+			if (countWins[i][0] === 3) {
+				//say who won and reset the game board
 				alert(player1Name + " won!");
 				reset();
 				//increment the number of wins for player 1
 				player1++;
 				//replace the innerHTML of player1Score to reflect the win
 				document.getElementById("player1Score").innerHTML = player1Name + ": " + player1;
-			} else if (choice != 0 && (countFirstCol2 === 3 || countSecondCol2 === 3 || countThirdCol2 === 3 || countFirstRow2 === 3 || countSecondRow2 === 3 || countThirdRow2 === 3 || countNWDiagonal2 === 3 || countNEDiagonal2 === 3)) {
+			} else if (countWins[i][1] === 3) {
 				alert(player2Name + " won!");
 				reset();
 				player2++;
@@ -420,8 +394,9 @@
 				//this is just if someone clicks the board before pressing play and selecting pieces
 				alert("Click the play button!");
 				reset();
-			} else {}
+			}
 		}
+	}
 	</script>
 </body>
 </html>
