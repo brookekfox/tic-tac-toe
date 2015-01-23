@@ -3,17 +3,19 @@
 <head>
 	<title>Brooke's Tic Tac Toe</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 	<!-- <script type="text/javascript" src="test.js"></script> -->
+	<link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<h1>Tic Tac Toe</h1>
-	<div>
-		<input type="submit" value="PLAY" id="playButton">
+	<div id="divForPlayButton">
+		<input type="submit" value="Play" id="playButton">
 	</div>
-	<div class="centered">
+	<div id="playerScores">
 		<h2 id="player1Score"></h2>
 		<h2 id="player2Score"></h2>
-	</div>
+	</div><br><br><br>
 	<div id="fullBoard">
 		<div id="board">
 			<div class="box" id="box0" data-number=0></div>
@@ -108,6 +110,7 @@
 				player2Image = "<img src='http://thetuskdotcom.files.wordpress.com/2014/03/tumblr_n0rcgxhsdj1r3vav0o1_1280.png'>";
 			}
 			//player win counts
+			document.getElementById("playerScores").style.display = 'block'; 
 			document.getElementById("player1Score").innerHTML = player1Name + ": " + player1;
 			document.getElementById("player2Score").innerHTML = player2Name + ": " + player2;
 			reset();
