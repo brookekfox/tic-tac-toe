@@ -20,15 +20,15 @@
 	</div><br><br><br>
 	<div id="fullBoard">
 		<div id="board">
-			<div class="box" id="box0" data-number=0></div>
-			<div class="box" id="box1" data-number=1></div>
-			<div class="box" id="box2" data-number=2></div>
-			<div class="box" id="box3" data-number=3></div>
-			<div class="box" id="box4" data-number=4></div>
-			<div class="box" id="box5" data-number=5></div>
-			<div class="box" id="box6" data-number=6></div>
-			<div class="box" id="box7" data-number=7></div>
-			<div class="box" id="box8" data-number=8></div>
+			<div class="box" id="box0" data-number=0 data-clicked=false></div>
+			<div class="box" id="box1" data-number=1 data-clicked=false></div>
+			<div class="box" id="box2" data-number=2 data-clicked=false></div>
+			<div class="box" id="box3" data-number=3 data-clicked=false></div>
+			<div class="box" id="box4" data-number=4 data-clicked=false></div>
+			<div class="box" id="box5" data-number=5 data-clicked=false></div>
+			<div class="box" id="box6" data-number=6 data-clicked=false></div>
+			<div class="box" id="box7" data-number=7 data-clicked=false></div>
+			<div class="box" id="box8" data-number=8 data-clicked=false></div>
 		</div>
 	</div>
 
@@ -72,6 +72,7 @@
 			turn = 0;
 			player = 1;
 		}
+
 		function newGame() {
 			reset();
 			player1 = 0;
@@ -83,7 +84,7 @@
 		var player2Image = "";
 		var choice = 0;
 		document.getElementById("playButton").addEventListener('click', function () {
-			choice = prompt("Choose: [1] Tina Belcher vs. Louise Belcher, [2] Mr. Darcy vs. Elizabeth Bennet, [3] Dillon Panthers vs. East Dillon Lions, [4] Ron Swanson vs. Leslie Knope, [5] Pizza vs. Mac & Cheese, [6] Abbi vs. Ilana, [7] Harry Potter vs Hermione Granger");
+			choice = prompt("Choose: [1] Tina Belcher vs. Louise Belcher, [2] Mr. Darcy vs. Elizabeth Bennet, [3] Dillon Panthers vs. East Dillon Lions, [4] Ron Swanson vs. Leslie Knope, [5] Pizza vs. Mac & Cheese, [6] Abbi vs. Ilana, [7] Harry Potter vs Voldemort [8] Khaleesi vs. Arya Stark");
 			//depending on the user's choice, playerName and playerImage are set; in the game logic the innerHTML of the boxes will be set to the playerImages
 			if(choice == 1) {
 				player1Name = "Tina Belcher";
@@ -118,8 +119,13 @@
 			} else if (choice == 7) {
 				player1Name = "Harry Potter";
 				player1Image = "<img src='http://fc08.deviantart.net/fs71/f/2011/189/6/e/harry_potter_png_11_by_esra99-d3le6zm.png'>";
-				player2Name = "Hermione Granger";
-				player2Image = "<img src='http://img4.wikia.nocookie.net/__cb20130912094117/leonhartimvu/images/c/ca/Hermione_Granger_1st_year.png'>";
+				player2Name = "Voldemort";
+				player2Image = "<img src='http://1.bp.blogspot.com/-AfKNkf_kH1Y/TiBzNl8UJoI/AAAAAAAAAwA/7PuPhx8bKiI/s1600/Harry+Potter+Lord+Voldemort%25C2%25B2.png'>";
+			} else if (choice == 8) {
+				player1Name = "Khaleesi";
+				player1Image = "<img src='http://officialpsds.com/images/thumbs/Daenerys-Targaryen-psd95184.png'>";
+				player2Name = "Arya Stark";
+				player2Image = "<img src='http://pixel.nymag.com/imgs/daily/vulture/2013/05/08/08-maisie-williams.o.png/a_250x375.png'>";
 			}
 			//reset the game board to the beginning/to empty
 			newGame();
@@ -152,7 +158,7 @@
 		var turn = 0;
 		//we start with player = 1 then switch to player = 0
 		var player = 1;
-		//these are the win counts of each player
+		//win counts of each player
 		var player1 = 0;
 		var player2 = 0;
 
