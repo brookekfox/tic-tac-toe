@@ -10,13 +10,17 @@
 </head>
 <body>
 	<h1>Tic Tac Toe</h1>
-	<div id="divForPlayButton">
-		<input type="submit" value="Play" id="playButton">
+	<div class="left-container">
+		<div id="divForPlayButton">
+			<input type="submit" value="Play" id="playButton">
+		</div>
+		<div id="playerScores">
+			<h2 id="player1Score"></h2>
+			<h2 id="player2Score"></h2>
+		</div>
 	</div>
-	<div id="playerScores">
-		<h2 id="player1Score"></h2>
-		<h2 id="player2Score"></h2>
-	</div><br><br><br>
+	<br><br><br>
+
 	<div id="fullBoard">
 		<div id="board">
 			<div class="box" id="box0" data-number=0 data-clicked=false></div>

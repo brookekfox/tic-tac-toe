@@ -1,89 +1,84 @@
 // this function resets the game board to empty; it does not reset the player win count
-		function reset() {
-			countWins = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
-			box0.innerHTML = "";
-			box1.innerHTML = "";
-			box2.innerHTML = "";
-			box3.innerHTML = "";
-			box4.innerHTML = "";
-			box5.innerHTML = "";
-			box6.innerHTML = "";
-			box7.innerHTML = "";
-			box8.innerHTML = "";
-			box0Clicked = false;
-			box1Clicked = false;
-			box2Clicked = false;
-			box3Clicked = false;
-			box4Clicked = false;
-			box5Clicked = false;
-			box6Clicked = false;
-			box7Clicked = false;
-			box8Clicked = false;
-			turn = 0;
-			player = 1;
-		}
+function reset() {
+	countWins = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+	box0.innerHTML = "";
+	box1.innerHTML = "";
+	box2.innerHTML = "";
+	box3.innerHTML = "";
+	box4.innerHTML = "";
+	box5.innerHTML = "";
+	box6.innerHTML = "";
+	box7.innerHTML = "";
+	box8.innerHTML = "";
+	box0Clicked = false;
+	box1Clicked = false;
+	box2Clicked = false;
+	box3Clicked = false;
+	box4Clicked = false;
+	box5Clicked = false;
+	box6Clicked = false;
+	box7Clicked = false;
+	box8Clicked = false;
+	turn = 0;
+	player = 1;
+}
 
-		function newGame() {
-			reset();
-			player1 = 0;
-			player2 = 0;
-		}
+function newGame() {
+	reset();
+	player1 = 0;
+	player2 = 0;
+}
 
-		//this series of lines allows the player to select which game pieces will be used via a prompt
-		var player1Image = "";
-		var player2Image = "";
-		var choice = 0;
-		document.getElementById("playButton").addEventListener('click', function () {
-			choice = prompt("Choose: [1] Tina Belcher vs. Louise Belcher, [2] Mr. Darcy vs. Elizabeth Bennet, [3] Dillon Panthers vs. East Dillon Lions, [4] Ron Swanson vs. Leslie Knope, [5] Pizza vs. Mac & Cheese, [6] Abbi vs. Ilana, [7] Harry Potter vs Voldemort [8] Khaleesi vs. Arya Stark");
-			//depending on the user's choice, playerName and playerImage are set; in the game logic the innerHTML of the boxes will be set to the playerImages
-			if(choice == 1) {
-				player1Name = "Tina Belcher";
-				player1Image = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
-				player2Name = "Louise Belcher";
-				player2Image = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
-			} else if (choice == 2) {
-				player1Name = "Mr. Darcy";
-				player1Image = "<img src='http://vignette3.wikia.nocookie.net/janeausten/images/2/2d/Mrdarcy.jpg/revision/latest?cb=20111116035357'>";
-				player2Name = "Elizabeth Bennet";
-				player2Image = "<img src='http://images2.fanpop.com/image/photos/10400000/Elizabeth-keira-knightley-as-elizabeth-bennet-10470495-1250-820.jpg'>";
-			} else if (choice == 3) {
-				player1Name = "Dillon Panthers";
-				player1Image = "<img src='http://ih3.redbubble.net/image.10753990.0624/sticker,375x360.u1.png'>";
-				player2Name = "East Dillon Lions";
-				player2Image = "<img src='http://ih3.redbubble.net/image.10754016.0657/sticker,375x360.u1.png'>";
-			} else if (choice == 4) {
-				player1Name = "Ron Swanson";
-				player1Image = "<img src='http://whatwouldronsay.com/img/ron-2.png'>";
-				player2Name = "Leslie Knope";
-				player2Image = "<img src='http://assets.goodstatic.com/s3/magazine/assets/538060/original/tumblr_n1kig7ck7D1qayeymo5_500.gif'>";
-			} else if (choice == 5) {
-				player1Name = "Pizza";
-				player1Image = "<img src='http://img4.wikia.nocookie.net/__cb20121123053932/bravestwarriors/images/f/f4/PIzza.png'>";
-				player2Name = "Mac & Cheese";
-				player2Image = "<img src='http://s3.amazonaws.com/bojangles.com/content/menu/items/sizes/photos/large/29.png'>";
-			} else if (choice == 6) {
-				player1Name = "Abbi";
-				player1Image = "<img src='http://cdn2.thegloss.com/wp-content/uploads/2015/01/Abbi-Jacobson-gif.gif'>";
-				player2Name = "Ilana";
-				player2Image = "<img src='http://thetuskdotcom.files.wordpress.com/2014/03/tumblr_n0rcgxhsdj1r3vav0o1_1280.png'>";
-			} else if (choice == 7) {
-				player1Name = "Harry Potter";
-				player1Image = "<img src='http://fc08.deviantart.net/fs71/f/2011/189/6/e/harry_potter_png_11_by_esra99-d3le6zm.png'>";
-				player2Name = "Voldemort";
-				player2Image = "<img src='http://1.bp.blogspot.com/-AfKNkf_kH1Y/TiBzNl8UJoI/AAAAAAAAAwA/7PuPhx8bKiI/s1600/Harry+Potter+Lord+Voldemort%25C2%25B2.png'>";
-			} else if (choice == 8) {
-				player1Name = "Khaleesi";
-				player1Image = "<img src='http://officialpsds.com/images/thumbs/Daenerys-Targaryen-psd95184.png'>";
-				player2Name = "Arya Stark";
-				player2Image = "<img src='http://pixel.nymag.com/imgs/daily/vulture/2013/05/08/08-maisie-williams.o.png/a_250x375.png'>";
-			}
-			//reset the game board to the beginning/to empty
-			newGame();
-			//player win counts
-			document.getElementById("playerScores").style.display = 'block'; 
-			document.getElementById("player1Score").innerHTML = player1Name + ": " + player1;
-			document.getElementById("player2Score").innerHTML = player2Name + ": " + player2;
-		});
+//this series of lines allows the player to select which game pieces will be used via a prompt
+var player1Image = "";
+var player2Image = "";
+var choice = 0;
+document.getElementById("playButton").addEventListener('click', function () {
+	choice = prompt("Choose: [1] Tina Belcher vs. Louise Belcher, [2] Mr. Darcy vs. Elizabeth Bennet, [3] Dillon Panthers vs. East Dillon Lions, [4] Ron Swanson vs. Leslie Knope, [5] Pizza vs. Mac & Cheese, [6] Harry Potter vs Voldemort, or [7] Khaleesi vs. Arya Stark");
+	//depending on the user's choice, playerName and playerImage are set; in the game logic the innerHTML of the boxes will be set to the playerImages
+	if(choice == 1) {
+		player1Name = "Tina Belcher";
+		player1Image = "<img src='http://data1.whicdn.com/images/81387822/large.png'>";
+		player2Name = "Louise Belcher";
+		player2Image = "<img src='http://img4.wikia.nocookie.net/__cb20140420011350/villains/images/5/5f/Louise_Belcher.png'>";
+	} else if (choice == 2) {
+		player1Name = "Mr. Darcy";
+		player1Image = "<img src='http://i.imgur.com/QVWcz.png'>";
+		player2Name = "Elizabeth Bennet";
+		player2Image = "<img src='http://images2.fanpop.com/image/photos/10400000/Elizabeth-keira-knightley-as-elizabeth-bennet-10470495-1250-820.jpg'>";
+	} else if (choice == 3) {
+		player1Name = "Dillon Panthers";
+		player1Image = "<img src='http://ih3.redbubble.net/image.10753990.0624/sticker,375x360.u1.png'>";
+		player2Name = "East Dillon Lions";
+		player2Image = "<img src='http://ih3.redbubble.net/image.10754016.0657/sticker,375x360.u1.png'>";
+	} else if (choice == 4) {
+		player1Name = "Ron Swanson";
+		player1Image = "<img src='http://whatwouldronsay.com/img/ron-2.png'>";
+		player2Name = "Leslie Knope";
+		player2Image = "<img src='http://3.bp.blogspot.com/-eT8s321qY9Y/UyhJomfNYTI/AAAAAAAAAG8/JLvjuA3Vobg/s1600/deskpic3.png'>";
+	} else if (choice == 5) {
+		player1Name = "Pizza";
+		player1Image = "<img src='http://img4.wikia.nocookie.net/__cb20121123053932/bravestwarriors/images/f/f4/PIzza.png'>";
+		player2Name = "Mac & Cheese";
+		player2Image = "<img src='http://s3.amazonaws.com/bojangles.com/content/menu/items/sizes/photos/large/29.png'>";
+	} else if (choice == 6) {
+		player1Name = "Harry Potter";
+		player1Image = "<img src='http://fc08.deviantart.net/fs71/f/2011/189/6/e/harry_potter_png_11_by_esra99-d3le6zm.png'>";
+		player2Name = "Voldemort";
+		player2Image = "<img src='http://1.bp.blogspot.com/-AfKNkf_kH1Y/TiBzNl8UJoI/AAAAAAAAAwA/7PuPhx8bKiI/s1600/Harry+Potter+Lord+Voldemort%25C2%25B2.png'>";
+	} else if (choice == 7) {
+		player1Name = "Khaleesi";
+		player1Image = "<img src='http://officialpsds.com/images/thumbs/Daenerys-Targaryen-psd95184.png'>";
+		player2Name = "Arya Stark";
+		player2Image = "<img src='http://pixel.nymag.com/imgs/daily/vulture/2013/05/08/08-maisie-williams.o.png/a_250x375.png'>";
+	}
+	//reset the game board to the beginning/to empty
+	newGame();
+	//player win counts
+	document.getElementById("playerScores").style.display = 'block'; 
+	document.getElementById("player1Score").innerHTML = player1Name + ": " + player1;
+	document.getElementById("player2Score").innerHTML = player2Name + ": " + player2;
+});
 
 		//this array sets the total number of boxes in each column, row, and diagonal each player occupies; in order to start the game, these should be 0 (ie the players do not occupy any boxes)
 		var countWins = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
@@ -194,8 +189,8 @@
 			} else if (player === 0 && box3Clicked === false) {
 				box3.innerHTML = player2Image;
 				box3Clicked = true;
-				countWins[0][0]++;
-				countWins[4][0]++;
+				countWins[0][1]++;
+				countWins[4][1]++;
 				player = 1;
 				turn++;
 				winner();

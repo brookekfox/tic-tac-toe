@@ -1,19 +1,19 @@
 body {
 	background-color: #f0f0f0;
+	position: relative;
 }
 h1 {
 	text-align: center;
 	font-size: 72pt;
 	float: top;
 	font-family: 'Lobster', cursive;
-	position: relative;
-	top: -40px;
+	/*position: relative;
+	top: -40px;*/
 }
 #playerScores {
 	display: none;
 	border: 8px double green;
 	font-size: 20pt;
-	/*font-family: 'Lobster', cursive;*/
 	font-family: 'Bangers', cursive;
 	border-radius: 10px;
 	position: absolute;
