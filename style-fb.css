@@ -4,7 +4,9 @@ body{
 }
 
 #container {
-	width: 55%;
+	/*width: 55%;*/
+	width: 520px;
+	height: 520px;
 	border: 2px dotted #f0f0f0;
 	border-radius: 10px;
 	background-color: rgba(240,240,240,.7);
@@ -13,12 +15,10 @@ body{
 }
 .square {
 	display: inline-block;
-	/*height: 100px;
-	width: 100px;*/
 	width: 120px;
 	height: 120px;
 	border: 2px solid green;
-	margin: 4px;
+	margin: 5px;
 	padding: 2%;
 }
 .xSelected {
@@ -30,21 +30,4 @@ body{
 	background: url('http://wcdn4.dataknet.com/static/resources/icons/set34/17f9a6c8.png');
 	background-size: 120px 120px;
     background-repeat: no-repeat;
-}
-
-.box {
-  margin: 1px;
-  border: 2px solid black;  
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  float: left;
-}
-
-.box.p1 {
-  background-color: lightblue;
-}
-
-.box.p2 {
-  background-color: lightgreen;
 }

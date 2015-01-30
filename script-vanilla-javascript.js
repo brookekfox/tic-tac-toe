@@ -75,7 +75,7 @@ document.getElementById("playButton").addEventListener('click', function () {
 	//reset the game board to the beginning/to empty
 	newGame();
 	//player win counts
-	document.getElementById("playerScores").style.display = 'block'; 
+	document.getElementById("playerScores").style.display = 'block';
 	document.getElementById("player1Score").innerHTML = player1Name + ": " + player1;
 	document.getElementById("player2Score").innerHTML = player2Name + ": " + player2;
 });
