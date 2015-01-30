@@ -1,2 +1,1 @@
-# tic-tac-toe
-Brooke's Tic Tac Toe game!
+# tic-tac-toe-firebase
